@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -23,6 +21,5 @@ public class Suspector {
 
     private LocalDateTime retiredDate;
 
-    @OneToMany(mappedBy = "suspect", cascade = CascadeType.ALL)
-    private Set<Inv_Suspector> investigationSuspectors ;
+
 }

@@ -35,4 +35,13 @@ public class InvInspectorService {
             inspectorRepository.deleteById(nic);
         }
 
+        public List<InvestigationInspector> searchInspector(String keyword) {
+        List<InvestigationInspector> inspector = inspectorRepository.findInvestigationInspectorBy(keyword);
+            if (inspector.isEmpty()) {
+                throw new IllegalArgumentException("No investigations found for the keyword: " + keyword);
+            }
+
+            return inspectorRepository.findInvestigationInspectorBy(keyword);
+        }
+
 }

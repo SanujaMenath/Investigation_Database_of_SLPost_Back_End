@@ -15,11 +15,9 @@ public class InterimReportDTO {
     @NotNull
     private String interimReportId;
 
-    @NotNull
-    private String fileId;
+    private InvestigationRefDTO investigation;
 
-    @NotNull
-    private String nic;
+    private InspectorRefDTO investigationInspector;
 
     private String interimRecommendation;
 

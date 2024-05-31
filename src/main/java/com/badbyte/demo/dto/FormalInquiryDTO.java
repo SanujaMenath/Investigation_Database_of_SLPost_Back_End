@@ -5,21 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class FormalInquiryDTO {
 
-    @NotNull
+        @NotNull
         private String id;
-    @NotNull
-        private String fileId;
-        private LocalDate dateOfAppoint;
-        private LocalDate startedDate;
-        private LocalDate endDate;
+
+        private InvestigationRefDTO investigation;
+        private Date dateOfAppoint;
+        private Date startedDate;
+        private Date endDate;
         private String recommendationOfIO;
-        private LocalDate dateOfRecommendation;
+        private Date dateOfRecommendation;
 
 }

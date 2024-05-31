@@ -18,6 +18,7 @@ public class ChargeSheetService {
     @Autowired
     ModelMapper modelMapper;
 
+
     public ChargeSheet saveChargeSheet(ChargeSheetDTO chargeSheet) {
         ChargeSheet chargeSheetEntity = modelMapper.map(chargeSheet, ChargeSheet.class);
         return chargeSheetRepo.save(chargeSheetEntity);
@@ -33,6 +34,16 @@ public class ChargeSheetService {
 
     public void deleteChargeSheet(String id) {
         chargeSheetRepo.deleteById(id);
+    }
+
+    public List<ChargeSheet> getChargeSheetsByOrder(String keyword) {
+
+        List<ChargeSheet> search =  chargeSheetRepo.findChargeSheetByKeyword( keyword);
+
+        if (search.isEmpty()) {
+            throw new IllegalArgumentException("No investigations found for the keyword: " + keyword);
+        }
+        return chargeSheetRepo.findChargeSheetByKeyword(keyword);
     }
 
 }

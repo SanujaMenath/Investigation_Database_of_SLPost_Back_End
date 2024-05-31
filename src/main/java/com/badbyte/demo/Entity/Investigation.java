@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,30 +20,27 @@ public class Investigation {
 
     private String incident;
 
-    private LocalDateTime incidentDate;
+    private Date incidentDate;
 
-    private LocalDateTime dateReferedToInvestigate;
+    private Date dateReferedToInvestigate;
 
-    private LocalDateTime dateOfFinalReportIssued;
+    private Date dateOfFinalReportIssued;
 
     private String recommendationOfFinalReport;
 
     private String personWhoAcceptedSubmission;
 
-    private LocalDateTime acceptedSubmissionDate;
+    private Date acceptedSubmissionDate;
 
-    private LocalDateTime handOveredDateOfSubmission;
+    private Date handOveredDateOfSubmission;
 
-    private boolean status;
+    private String status;
 
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private Date updatedAt;
 
     @OneToMany(mappedBy = "investigation", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<IIAssignment> assignments = new HashSet<>();
-
-    @OneToMany(mappedBy = "investigation", cascade = CascadeType.ALL)
-    private Set<Inv_Suspector> investigationSuspectors ;
 
 
 }

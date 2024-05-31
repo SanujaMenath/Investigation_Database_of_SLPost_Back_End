@@ -19,7 +19,7 @@ public class InterimReport {
     @JoinColumn(name = "file_id")
     private Investigation investigation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "nic")
     private InvestigationInspector investigationInspector;
 

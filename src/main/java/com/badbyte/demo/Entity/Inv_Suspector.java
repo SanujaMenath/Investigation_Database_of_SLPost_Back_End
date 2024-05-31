@@ -14,17 +14,17 @@ import java.util.Date;
 @Entity
 public class Inv_Suspector {
 
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-        @EmbeddedId
-        private InvestigationSuspectorId id;
-
-        @ManyToOne(fetch = FetchType.LAZY)
+        @ManyToOne (fetch = FetchType.LAZY)
         @JoinColumn(name = "fileId")
         private Investigation investigation;
 
-        @ManyToOne(fetch = FetchType.LAZY)
+        @ManyToOne (fetch = FetchType.LAZY)
         @JoinColumn(name = "nic")
-        private Suspector suspect;
+        private Suspector suspector;
 
         private Date interdictedDate;
         private Date dateOfAppealedForReinstate;

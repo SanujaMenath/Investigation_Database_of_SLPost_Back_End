@@ -3,10 +3,9 @@ package com.badbyte.demo.services;
 import com.badbyte.demo.Entity.Suspector;
 import com.badbyte.demo.dto.SuspectorDTO;
 import com.badbyte.demo.repository.SuspectRepo;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -42,6 +41,14 @@ public class SuspectorService {
     }
     private LocalDateTime CalculateRetirementDate(LocalDateTime dob,int yearsToAdd) {
         return dob.plusYears(yearsToAdd);
+    }
+
+    public List<Suspector> searchSuspectors(String search) {
+        List<Suspector> suspectors = suspectRepo.searchSuspectors(search);
+        if (suspectors.isEmpty()) {
+            throw new IllegalArgumentException("No investigations found for the keyword: " + search);
+        }
+        return suspectors;
     }
 
 

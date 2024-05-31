@@ -20,8 +20,8 @@ public class FormalInquiry {
 
         @ManyToOne
         @JoinColumn(name = "file_id")
-
         private Investigation investigation;
+
         private LocalDate dateOfAppoint;
         private LocalDate startedDate;
         private LocalDate endDate;

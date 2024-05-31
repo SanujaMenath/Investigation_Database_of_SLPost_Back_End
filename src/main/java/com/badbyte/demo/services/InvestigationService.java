@@ -23,7 +23,7 @@ public class InvestigationService {
         return repository.findAll();
     }
 
-    public Investigation getInvestigationById(Long id) {
+    public Investigation getInvestigationById(String id) {
         return repository.findById(id).orElse(null);
     }
 
@@ -33,7 +33,7 @@ public class InvestigationService {
         return repository.save(inv);
     }
 
-    public Investigation editInvestigation(Long id, InvestigationDTO investigationToUpdate) {
+    public Investigation editInvestigation(String id, InvestigationDTO investigationToUpdate) {
         Investigation alreadyExistingInvestigation = getInvestigationById(id);
 
         modelMapper.map(investigationToUpdate, alreadyExistingInvestigation);
@@ -41,11 +41,22 @@ public class InvestigationService {
         return repository.save(alreadyExistingInvestigation);
     }
 
-    public Investigation tgetInvestigationByFileNumber(String fileNumber) {
+    public Investigation getInvestigationByFileNumber(String fileNumber) {
         return repository.findByFileNumber(fileNumber);
     }
 
-    public void deleteInvestigation(Long id) {
+    public void deleteInvestigation(String id) {
         repository.deleteById(id);
     }
+
+    public List<Investigation> searchInvestigations(String keyword) {
+
+        List<Investigation> investigations = repository.searchInvestigations(keyword);
+        if (investigations.isEmpty()) {
+            throw new IllegalArgumentException("No investigations found for the keyword: " + keyword);
+        }
+
+        return investigations;
+    }
+
 }

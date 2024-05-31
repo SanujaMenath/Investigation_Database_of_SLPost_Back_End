@@ -2,6 +2,7 @@ package com.badbyte.demo.Controller;
 
 import com.badbyte.demo.Entity.Suspector;
 import com.badbyte.demo.dto.SuspectorDTO;
+import com.badbyte.demo.exceptions.responses.KeywordNotFoundResponse;
 import com.badbyte.demo.services.SuspectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,11 +36,25 @@ public class SuspectController {
 
     }
 
-
     @GetMapping
     public List<Suspector> getAllSuspectors() {
         System.out.println(LocalDateTime.now().toString());
         return service.getAllSuspectors();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Object> searchSuspector(@RequestParam String keyword) {
+        try {
+            if (keyword == null || keyword.isEmpty()) {
+                KeywordNotFoundResponse response = new KeywordNotFoundResponse(this.getClass().getName(), "Keyword cannot be null or empty");
+                return ResponseEntity.unprocessableEntity().body(response);
+            }
+
+            List<Suspector> results = service.searchSuspectors(keyword);
+            return ResponseEntity.ok(results);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 }
