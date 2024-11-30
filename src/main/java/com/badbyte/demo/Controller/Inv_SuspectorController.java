@@ -1,8 +1,8 @@
 package com.badbyte.demo.Controller;
 
-import com.badbyte.demo.Entity.Inv_Suspector;
-import com.badbyte.demo.Entity.Investigation;
-import com.badbyte.demo.Entity.Suspector;
+import com.badbyte.demo.Entity.Investigation_Suspectors;
+import com.badbyte.demo.Entity.Investigations;
+import com.badbyte.demo.Entity.Suspectors;
 import com.badbyte.demo.dto.Inv_SuspectorDTO;
 import com.badbyte.demo.services.Inv_SuspectorService;
 import com.badbyte.demo.services.InvestigationService;
@@ -26,30 +26,30 @@ public class Inv_SuspectorController {
     private SuspectorService suspectorService;
 
     @GetMapping
-        public List<Inv_Suspector> getAllInvestigationSuspectors() {
+        public List<Investigation_Suspectors> getAllInvestigationSuspectors() {
             return investigationSuspectorService.getAllInvestigationSuspectors();
         }
 
         @GetMapping("/{id}")
-        public Optional<Inv_Suspector> getInvestigationSuspectorById(@PathVariable Long id) {
+        public Optional<Investigation_Suspectors> getInvestigationSuspectorById(@PathVariable Long id) {
             return investigationSuspectorService.getInvestigationSuspectorById(id);
         }
 
         @PostMapping
         public ResponseEntity<Object> createInvestigationSuspector(@RequestBody Inv_SuspectorDTO  inv_suspectorDTO) {
 
-            Investigation investigation = investigationService.getInvestigationByFileNumber(inv_suspectorDTO.getInvestigation().getFileId());
-            Suspector suspector = suspectorService.getSuspectorById(inv_suspectorDTO.getSuspector().getNic());
+            Investigations investigations = investigationService.getInvestigationByFileNumber(inv_suspectorDTO.getInvestigation().getFileId());
+            Suspectors suspectors = suspectorService.getSuspectorById(inv_suspectorDTO.getSuspector().getNic());
 
-            if (investigation == null){
+            if (investigations == null){
                 return ResponseEntity.badRequest().body("Investigation is not found in the db.");
             }
 
-            if (suspector == null){
+            if (suspectors == null){
                 return ResponseEntity.badRequest().body("Inspector is not found in the db.");
             }
 
-            Inv_Suspector saveInvSus = investigationSuspectorService.saveInvestigationSuspector(inv_suspectorDTO);
+            Investigation_Suspectors saveInvSus = investigationSuspectorService.saveInvestigationSuspector(inv_suspectorDTO);
 
             return ResponseEntity.ok().body(saveInvSus);
         }

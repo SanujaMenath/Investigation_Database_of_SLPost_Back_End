@@ -2,9 +2,9 @@ package com.badbyte.demo.services;
 
 
 
-import com.badbyte.demo.Entity.Investigation;
+import com.badbyte.demo.Entity.Investigations;
 import com.badbyte.demo.dto.InvestigationDTO;
-import com.badbyte.demo.repository.InvestiRepo;
+import com.badbyte.demo.repository.InvestigationRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,34 +14,34 @@ import java.util.List;
 @Service
 public class InvestigationService {
     @Autowired
-    private InvestiRepo repository;
+    private InvestigationRepo repository;
 
     @Autowired
     ModelMapper modelMapper;
 
-    public List<Investigation> getAllInvestigations() {
+    public List<Investigations> getAllInvestigations() {
         return repository.findAll();
     }
 
-    public Investigation getInvestigationById(String id) {
+    public Investigations getInvestigationById(String id) {
         return repository.findById(id).orElse(null);
     }
 
-    public Investigation saveInvestigation(InvestigationDTO investigation) {
-        Investigation inv = modelMapper.map(investigation, Investigation.class);
+    public Investigations saveInvestigation(InvestigationDTO investigation) {
+        Investigations inv = modelMapper.map(investigation, Investigations.class);
 
         return repository.save(inv);
     }
 
-    public Investigation editInvestigation(String id, InvestigationDTO investigationToUpdate) {
-        Investigation alreadyExistingInvestigation = getInvestigationById(id);
+    public Investigations editInvestigation(String id, InvestigationDTO investigationToUpdate) {
+        Investigations alreadyExistingInvestigations = getInvestigationById(id);
 
-        modelMapper.map(investigationToUpdate, alreadyExistingInvestigation);
+        modelMapper.map(investigationToUpdate, alreadyExistingInvestigations);
 
-        return repository.save(alreadyExistingInvestigation);
+        return repository.save(alreadyExistingInvestigations);
     }
 
-    public Investigation getInvestigationByFileNumber(String fileNumber) {
+    public Investigations getInvestigationByFileNumber(String fileNumber) {
         return repository.findByFileNumber(fileNumber);
     }
 
@@ -49,9 +49,9 @@ public class InvestigationService {
         repository.deleteById(id);
     }
 
-    public List<Investigation> searchInvestigations(String keyword) {
+    public List<Investigations> searchInvestigations(String keyword) {
 
-        List<Investigation> investigations = repository.searchInvestigations(keyword);
+        List<Investigations> investigations = repository.searchInvestigations(keyword);
         if (investigations.isEmpty()) {
             throw new IllegalArgumentException("No investigations found for the keyword: " + keyword);
         }

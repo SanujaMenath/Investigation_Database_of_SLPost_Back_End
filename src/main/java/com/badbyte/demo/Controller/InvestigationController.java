@@ -2,9 +2,8 @@ package com.badbyte.demo.Controller;
 
 
 
-import com.badbyte.demo.Entity.Investigation;
+import com.badbyte.demo.Entity.Investigations;
 import com.badbyte.demo.dto.InvestigationDTO;
-import com.badbyte.demo.exceptions.responses.KeywordNotFoundResponse;
 import com.badbyte.demo.services.InvestigationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +19,14 @@ public class InvestigationController {
     private InvestigationService service;
 
     @GetMapping
-    public List<Investigation> getAllInvestigations() {
+    public List<Investigations> getAllInvestigations() {
         return service.getAllInvestigations();
     }
 
 
     @GetMapping("/{fileId}")
     public ResponseEntity<Object> getInvestigationByFileNumber(@PathVariable String fileId) {
-        Investigation inv = service.getInvestigationByFileNumber(fileId);
+        Investigations inv = service.getInvestigationByFileNumber(fileId);
         if (inv == null) {
             return ResponseEntity.notFound().build();
         }
@@ -60,11 +59,11 @@ public class InvestigationController {
     public ResponseEntity<Object> searchInvestigations(@RequestParam String keyword) {
         try {
             if (keyword == null || keyword.isEmpty()) {
-                KeywordNotFoundResponse response = new KeywordNotFoundResponse(this.getClass().getName(), "Keyword cannot be null or empty");
-                return ResponseEntity.unprocessableEntity().body(response);
+//                KeywordNotFoundResponse response = new KeywordNotFoundResponse(this.getClass().getName(), "Keyword cannot be null or empty");
+//                return ResponseEntity.unprocessableEntity().body(response);
             }
 
-            List<Investigation> results = service.searchInvestigations(keyword);
+            List<Investigations> results = service.searchInvestigations(keyword);
             return ResponseEntity.ok(results);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

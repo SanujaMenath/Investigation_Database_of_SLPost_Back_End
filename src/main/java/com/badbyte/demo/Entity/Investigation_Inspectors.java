@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class InvestigationInspector {
+public class Investigation_Inspectors {
 
     @Id
     private String nic;
@@ -23,5 +23,5 @@ public class InvestigationInspector {
     private String name;
 
     @OneToMany(mappedBy = "inspector", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<IIAssignment> assignments = new HashSet<>();
+    private Set<Investigation_Investigation_Inspectors> assignments = new HashSet<>();
 }

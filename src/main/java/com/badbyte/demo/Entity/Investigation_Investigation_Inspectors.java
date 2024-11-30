@@ -10,18 +10,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 
-public class IIAssignment {
+public class Investigation_Investigation_Inspectors {
 
         @Id
         private String caseNo;
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "file_id")
-        private Investigation investigation;
+        private Investigations investigations;
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "nic")
-        private InvestigationInspector inspector;
+        private Investigation_Inspectors inspector;
 
         private String acquiredDate;
         private String submittedDate;

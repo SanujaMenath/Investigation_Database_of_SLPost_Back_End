@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 
 @Entity
-public class Inv_Suspector {
+public class Investigation_Suspectors {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +20,11 @@ public class Inv_Suspector {
 
         @ManyToOne (fetch = FetchType.LAZY)
         @JoinColumn(name = "fileId")
-        private Investigation investigation;
+        private Investigations investigations;
 
         @ManyToOne (fetch = FetchType.LAZY)
         @JoinColumn(name = "nic")
-        private Suspector suspector;
+        private Suspectors suspectors;
 
         private Date interdictedDate;
         private Date dateOfAppealedForReinstate;

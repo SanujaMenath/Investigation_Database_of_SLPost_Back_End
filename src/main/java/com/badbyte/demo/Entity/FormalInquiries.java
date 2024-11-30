@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 
 @Entity
-public class FormalInquiry {
+public class FormalInquiries {
 
 
         @Id
@@ -20,7 +20,7 @@ public class FormalInquiry {
 
         @ManyToOne
         @JoinColumn(name = "file_id")
-        private Investigation investigation;
+        private Investigations investigations;
 
         private LocalDate dateOfAppoint;
         private LocalDate startedDate;

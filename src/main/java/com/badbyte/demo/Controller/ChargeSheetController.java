@@ -1,10 +1,9 @@
 package com.badbyte.demo.Controller;
 
-import com.badbyte.demo.Entity.ChargeSheet;
-import com.badbyte.demo.Entity.Investigation;
-import com.badbyte.demo.Entity.Suspector;
+import com.badbyte.demo.Entity.ChargeSheets;
+import com.badbyte.demo.Entity.Investigations;
+import com.badbyte.demo.Entity.Suspectors;
 import com.badbyte.demo.dto.ChargeSheetDTO;
-import com.badbyte.demo.exceptions.responses.KeywordNotFoundResponse;
 import com.badbyte.demo.services.ChargeSheetService;
 import com.badbyte.demo.services.InvestigationService;
 import com.badbyte.demo.services.SuspectorService;
@@ -28,32 +27,32 @@ public class ChargeSheetController {
     private SuspectorService suspectorService;
 
     @GetMapping
-    public List<ChargeSheet> getAllChargeSheets() {
+    public List<ChargeSheets> getAllChargeSheets() {
         return chargeSheetService.getAllChargeSheets();
     }
 
     @GetMapping("/{id}")
-    public ChargeSheet getChargeSheetById(@PathVariable String id) {
+    public ChargeSheets getChargeSheetById(@PathVariable String id) {
         return chargeSheetService.getChargeSheetById(id);
     }
 
     @PostMapping
     public ResponseEntity<Object> createChargeSheet(@RequestBody ChargeSheetDTO chargeSheetDTO) {
 
-        Investigation investigation = investigationService.getInvestigationByFileNumber(chargeSheetDTO.getInvestigation().getFileId());
-        Suspector suspector = suspectorService.getSuspectorById(chargeSheetDTO.getSuspector().getNic());
+        Investigations investigations = investigationService.getInvestigationByFileNumber(chargeSheetDTO.getInvestigation().getFileId());
+        Suspectors suspectors = suspectorService.getSuspectorById(chargeSheetDTO.getSuspector().getNic());
 
-        if (investigation == null){
+        if (investigations == null){
             return ResponseEntity.badRequest().body("Investigation is not found in the db.");
         }
 
-        if (suspector == null){
+        if (suspectors == null){
             return ResponseEntity.badRequest().body("Inspector is not found in the db.");
         }
 
-        ChargeSheet saveChargeSheet = chargeSheetService.saveChargeSheet(chargeSheetDTO);
+        ChargeSheets saveChargeSheets = chargeSheetService.saveChargeSheet(chargeSheetDTO);
 
-        return ResponseEntity.ok().body(saveChargeSheet);
+        return ResponseEntity.ok().body(saveChargeSheets);
     }
 
     @DeleteMapping("/{id}")
@@ -64,12 +63,12 @@ public class ChargeSheetController {
     @GetMapping("/search")
     public ResponseEntity<Object> getChargeSheetsByKeyword(@RequestParam String keyword) {
         try {
-            if (keyword == null || keyword.isEmpty()) {
-                KeywordNotFoundResponse response = new KeywordNotFoundResponse(this.getClass().getName(), "Keyword cannot be null or empty");
-                return ResponseEntity.unprocessableEntity().body(response);
-            }
+//            if (keyword == null || keyword.isEmpty()) {
+//                KeywordNotFoundResponse response = new KeywordNotFoundResponse(this.getClass().getName(), "Keyword cannot be null or empty");
+//                return ResponseEntity.unprocessableEntity().body(response);
+//            }
 
-            List<ChargeSheet> searchByOrder = chargeSheetService.getChargeSheetsByOrder(keyword);
+            List<ChargeSheets> searchByOrder = chargeSheetService.getChargeSheetsByOrder(keyword);
             return ResponseEntity.ok(searchByOrder);
 
         } catch (IllegalArgumentException e) {

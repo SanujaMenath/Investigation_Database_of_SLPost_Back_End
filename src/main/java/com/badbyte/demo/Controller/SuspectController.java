@@ -1,8 +1,7 @@
 package com.badbyte.demo.Controller;
 
-import com.badbyte.demo.Entity.Suspector;
+import com.badbyte.demo.Entity.Suspectors;
 import com.badbyte.demo.dto.SuspectorDTO;
-import com.badbyte.demo.exceptions.responses.KeywordNotFoundResponse;
 import com.badbyte.demo.services.SuspectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +19,9 @@ public class SuspectController {
     private SuspectorService service;
 
     @PostMapping
-    public ResponseEntity<Suspector> createSuspector(@RequestBody SuspectorDTO suspectorDTO) {
+    public ResponseEntity<Suspectors> createSuspector(@RequestBody SuspectorDTO suspectorDTO) {
         try {
-            Suspector sus = service.saveSuspector(suspectorDTO);
+            Suspectors sus = service.saveSuspector(suspectorDTO);
             if(sus!=null){
                 return ResponseEntity.ok().body(sus);
             }
@@ -37,7 +36,7 @@ public class SuspectController {
     }
 
     @GetMapping
-    public List<Suspector> getAllSuspectors() {
+    public List<Suspectors> getAllSuspectors() {
         System.out.println(LocalDateTime.now().toString());
         return service.getAllSuspectors();
     }
@@ -46,11 +45,11 @@ public class SuspectController {
     public ResponseEntity<Object> searchSuspector(@RequestParam String keyword) {
         try {
             if (keyword == null || keyword.isEmpty()) {
-                KeywordNotFoundResponse response = new KeywordNotFoundResponse(this.getClass().getName(), "Keyword cannot be null or empty");
-                return ResponseEntity.unprocessableEntity().body(response);
+//                KeywordNotFoundResponse response = new KeywordNotFoundResponse(this.getClass().getName(), "Keyword cannot be null or empty");
+//                return ResponseEntity.unprocessableEntity().body(response);
             }
 
-            List<Suspector> results = service.searchSuspectors(keyword);
+            List<Suspectors> results = service.searchSuspectors(keyword);
             return ResponseEntity.ok(results);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

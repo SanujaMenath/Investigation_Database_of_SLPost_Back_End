@@ -12,21 +12,21 @@ import java.util.Date;
 @Data
 
 @Entity
-public class ChargeSheet {
+public class ChargeSheets {
 
     @Id
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "file_id")
-    private Investigation investigation;
+    private Investigations investigations;
 
     private Date issuedDate;
     private Date dateOfAnswered;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "nic")
-    private Suspector suspector;
+    private Suspectors suspectors;
 
     private Date dateOfPersonalFileCalled;
     private Date dateOfPersonalReturned;

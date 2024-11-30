@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class IIAssignmentDTO {
+public class Investigation_Investigation_InspectorsDTO {
     @NotNull
     private String caseNo;
     private InvestigationRefDTO investigation;

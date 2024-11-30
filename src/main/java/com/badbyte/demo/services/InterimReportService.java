@@ -1,6 +1,6 @@
 package com.badbyte.demo.services;
 
-import com.badbyte.demo.Entity.InterimReport;
+import com.badbyte.demo.Entity.InterimReports;
 import com.badbyte.demo.dto.InterimReportDTO;
 import com.badbyte.demo.repository.InterimReportRepo;
 import org.modelmapper.ModelMapper;
@@ -18,16 +18,16 @@ public class InterimReportService {
     @Autowired
     InterimReportRepo interimReportRepository;
 
-    public List<InterimReport> getAllInterimReports() {
+    public List<InterimReports> getAllInterimReports() {
         return interimReportRepository.findAll();
     }
 
-    public InterimReport getInterimReportById(String interimReportId) {
+    public InterimReports getInterimReportById(String interimReportId) {
         return interimReportRepository.findById(interimReportId).orElse(null);
     }
 
-    public InterimReport saveInterimReport(InterimReportDTO interimReport) {
-        InterimReport intReport = modelMapper.map(interimReport, InterimReport.class);
+    public InterimReports saveInterimReport(InterimReportDTO interimReport) {
+        InterimReports intReport = modelMapper.map(interimReport, InterimReports.class);
         return interimReportRepository.save(intReport);
     }
 

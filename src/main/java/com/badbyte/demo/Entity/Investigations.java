@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Investigation {
+public class Investigations {
 
 
     @Id
@@ -39,8 +39,8 @@ public class Investigation {
     @UpdateTimestamp
     private Date updatedAt;
 
-    @OneToMany(mappedBy = "investigation", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<IIAssignment> assignments = new HashSet<>();
+    @OneToMany(mappedBy = "investigations", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Investigation_Investigation_Inspectors> assignments = new HashSet<>();
 
 
 }

@@ -11,17 +11,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Entity
-public class InterimReport {
+public class InterimReports {
     @Id
     private String interimReportId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "file_id")
-    private Investigation investigation;
+    private Investigations investigations;
 
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "nic")
-    private InvestigationInspector investigationInspector;
+    private Investigation_Inspectors investigationInspectors;
 
     private String interimRecommendation;
 

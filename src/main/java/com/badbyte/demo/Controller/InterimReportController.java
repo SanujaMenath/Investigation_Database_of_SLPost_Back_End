@@ -1,8 +1,8 @@
 package com.badbyte.demo.Controller;
 
-import com.badbyte.demo.Entity.InterimReport;
-import com.badbyte.demo.Entity.Investigation;
-import com.badbyte.demo.Entity.InvestigationInspector;
+import com.badbyte.demo.Entity.InterimReports;
+import com.badbyte.demo.Entity.Investigations;
+import com.badbyte.demo.Entity.Investigation_Inspectors;
 import com.badbyte.demo.dto.InterimReportDTO;
 import com.badbyte.demo.services.InterimReportService;
 import com.badbyte.demo.services.InvInspectorService;
@@ -26,21 +26,21 @@ public class InterimReportController {
     private InvInspectorService invInspectorService;
 
     @GetMapping
-    public List <InterimReport> getAllReports() {
+    public List <InterimReports> getAllReports() {
         return interimReportService.getAllInterimReports();
     }
 
     @GetMapping("/{id}")
-    public InterimReport getReportById(@PathVariable String id) {
+    public InterimReports getReportById(@PathVariable String id) {
         return interimReportService.getInterimReportById(id);
     }
 
     @PostMapping
     public ResponseEntity<Object> addReport(@RequestBody InterimReportDTO interimReport) {
-        Investigation investigation = investigationService.getInvestigationByFileNumber(interimReport.getInvestigation().getFileId());
-        InvestigationInspector inspector = invInspectorService.getInspectorById(interimReport.getInvestigationInspector().getNic());
+        Investigations investigations = investigationService.getInvestigationByFileNumber(interimReport.getInvestigation().getFileId());
+        Investigation_Inspectors inspector = invInspectorService.getInspectorById(interimReport.getInvestigationInspector().getNic());
 
-        if (investigation == null){
+        if (investigations == null){
             return ResponseEntity.badRequest().body("Investigation is not found in the db.");
         }
 
@@ -48,7 +48,7 @@ public class InterimReportController {
             return ResponseEntity.badRequest().body("Inspector is not found in the db.");
         }
 
-        InterimReport report = interimReportService.saveInterimReport(interimReport);
+        InterimReports report = interimReportService.saveInterimReport(interimReport);
 
         return ResponseEntity.ok(report);
     }

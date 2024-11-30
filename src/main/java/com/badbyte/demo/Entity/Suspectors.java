@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Suspector {
+public class Suspectors {
     @Id
     private String nic;
 

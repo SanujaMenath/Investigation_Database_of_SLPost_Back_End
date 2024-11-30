@@ -1,9 +1,9 @@
 package com.badbyte.demo.Controller;
 
-import com.badbyte.demo.Entity.IIAssignment;
-import com.badbyte.demo.Entity.Investigation;
-import com.badbyte.demo.Entity.InvestigationInspector;
-import com.badbyte.demo.dto.IIAssignmentDTO;
+import com.badbyte.demo.Entity.Investigation_Investigation_Inspectors;
+import com.badbyte.demo.Entity.Investigations;
+import com.badbyte.demo.Entity.Investigation_Inspectors;
+import com.badbyte.demo.dto.Investigation_Investigation_InspectorsDTO;
 import com.badbyte.demo.services.IIAssignmentService;
 import com.badbyte.demo.services.InvInspectorService;
 import com.badbyte.demo.services.InvestigationService;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/assignments")
@@ -29,22 +28,22 @@ public class IIAssignmentController {
         private InvInspectorService investigationInspectorService;
 
         @GetMapping
-        public List<IIAssignment> getAllAssignments() {
+        public List<Investigation_Investigation_Inspectors> getAllAssignments() {
             return assignmentService.getAllAssignments();
         }
 
         @GetMapping("/{id}")
-        public IIAssignment getAssignmentById(@PathVariable String CaseNo) {
+        public Investigation_Investigation_Inspectors getAssignmentById(@PathVariable String CaseNo) {
             return assignmentService.getAssignmentById(CaseNo);
         }
 
     @PostMapping
-    public ResponseEntity<Object> createAssignment(@RequestBody IIAssignmentDTO assignmentDTO) {
+    public ResponseEntity<Object> createAssignment(@RequestBody Investigation_Investigation_InspectorsDTO assignmentDTO) {
         // Fetch the Investigation and Inspector entities by their IDs
-        Investigation investigation = investigationService.getInvestigationByFileNumber(assignmentDTO.getInvestigation().getFileId());
-        InvestigationInspector inspector = investigationInspectorService.getInspectorById(assignmentDTO.getInspector().getNic());
+        Investigations investigations = investigationService.getInvestigationByFileNumber(assignmentDTO.getInvestigation().getFileId());
+        Investigation_Inspectors inspector = investigationInspectorService.getInspectorById(assignmentDTO.getInspector().getNic());
 
-        if (investigation == null){
+        if (investigations == null){
             return ResponseEntity.badRequest().body("Investigation is not found in the db.");
         }
 
@@ -52,14 +51,14 @@ public class IIAssignmentController {
             return ResponseEntity.badRequest().body("Inspector is not found in the db.");
         }
 
-        IIAssignment savedAssignment = assignmentService.saveAssignment(assignmentDTO);
+        Investigation_Investigation_Inspectors savedAssignment = assignmentService.saveAssignment(assignmentDTO);
 
         return ResponseEntity.ok(savedAssignment);
     }
 
     @PutMapping("/{id}")
-    public IIAssignment updateAssignment(@PathVariable String caseNo, @RequestBody IIAssignmentDTO assignment) {
-        IIAssignment existingAssignment = assignmentService.getAssignmentById(caseNo);
+    public Investigation_Investigation_Inspectors updateAssignment(@PathVariable String caseNo, @RequestBody Investigation_Investigation_InspectorsDTO assignment) {
+        Investigation_Investigation_Inspectors existingAssignment = assignmentService.getAssignmentById(caseNo);
         if (existingAssignment != null) {
             assignment.setCaseNo(caseNo);
             return assignmentService.saveAssignment(assignment);

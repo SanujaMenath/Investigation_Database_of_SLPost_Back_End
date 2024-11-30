@@ -1,6 +1,6 @@
 package com.badbyte.demo.services;
 
-import com.badbyte.demo.Entity.InvestigationInspector;
+import com.badbyte.demo.Entity.Investigation_Inspectors;
 import com.badbyte.demo.dto.InvInspectorDTO;
 import com.badbyte.demo.repository.InvInspectorRepo;
 import org.modelmapper.ModelMapper;
@@ -18,16 +18,16 @@ public class InvInspectorService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<InvestigationInspector> getAllInspectors() {
+    public List<Investigation_Inspectors> getAllInspectors() {
             return inspectorRepository.findAll();
         }
 
-        public InvestigationInspector getInspectorById(String nic) {
+        public Investigation_Inspectors getInspectorById(String nic) {
             return inspectorRepository.findById(nic).orElse(null);
         }
 
-        public InvestigationInspector saveInspector(InvInspectorDTO inspector) {
-            InvestigationInspector inspec = modelMapper.map(inspector, InvestigationInspector.class);
+        public Investigation_Inspectors saveInspector(InvInspectorDTO inspector) {
+            Investigation_Inspectors inspec = modelMapper.map(inspector, Investigation_Inspectors.class);
             return inspectorRepository.save(inspec);
         }
 
@@ -35,8 +35,8 @@ public class InvInspectorService {
             inspectorRepository.deleteById(nic);
         }
 
-        public List<InvestigationInspector> searchInspector(String keyword) {
-        List<InvestigationInspector> inspector = inspectorRepository.findInvestigationInspectorBy(keyword);
+        public List<Investigation_Inspectors> searchInspector(String keyword) {
+        List<Investigation_Inspectors> inspector = inspectorRepository.findInvestigationInspectorBy(keyword);
             if (inspector.isEmpty()) {
                 throw new IllegalArgumentException("No investigations found for the keyword: " + keyword);
             }
