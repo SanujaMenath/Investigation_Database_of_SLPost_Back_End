@@ -1,8 +1,8 @@
-package com.badbyte.demo.Controller;
+package com.badbyte.demo.controller;
 
-import com.badbyte.demo.Entity.Investigation_Investigation_Inspectors;
-import com.badbyte.demo.Entity.Investigations;
-import com.badbyte.demo.Entity.Investigation_Inspectors;
+import com.badbyte.demo.entity.Investigation_Investigation_Inspectors;
+import com.badbyte.demo.entity.Investigations;
+import com.badbyte.demo.entity.Investigation_Inspectors;
 import com.badbyte.demo.dto.Investigation_Investigation_InspectorsDTO;
 import com.badbyte.demo.services.IIAssignmentService;
 import com.badbyte.demo.services.InvInspectorService;

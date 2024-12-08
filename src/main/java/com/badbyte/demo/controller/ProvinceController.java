@@ -1,6 +1,6 @@
-package com.badbyte.demo.Controller;
+package com.badbyte.demo.controller;
 
-import com.badbyte.demo.Entity.Provinces;
+import com.badbyte.demo.entity.Provinces;
 import com.badbyte.demo.dto.ProvinceDTO;
 import com.badbyte.demo.services.ProvinceService;
 import org.modelmapper.ModelMapper;

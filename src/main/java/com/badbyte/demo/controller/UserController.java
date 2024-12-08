@@ -1,6 +1,6 @@
-package com.badbyte.demo.Controller;
+package com.badbyte.demo.controller;
 
-import com.badbyte.demo.Entity.Users;
+import com.badbyte.demo.entity.Users;
 import com.badbyte.demo.dto.UserDTO;
 import com.badbyte.demo.services.UserService;
 import org.modelmapper.ModelMapper;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8080")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -23,10 +23,10 @@ public class UserController {
 
     // Create a new user
     @PostMapping("/add")
-    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
         // Map DTO to entity
         Users users = modelMapper.map(userDTO, Users.class);
-        Users savedUsers = userService.saveUser(users);
+        Users savedUsers = userService.registerUser(users);
 
         // Map entity back to DTO
         UserDTO savedUserDTO = modelMapper.map(savedUsers, UserDTO.class);
@@ -50,8 +50,9 @@ public class UserController {
     public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
         Users users = userService.getUserById(id);
 
-        // Map entity to DTO
+
         UserDTO userDTO = modelMapper.map(users, UserDTO.class);
         return ResponseEntity.ok(userDTO);
     }
+
 }

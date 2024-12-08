@@ -1,6 +1,6 @@
-package com.badbyte.demo.Controller;
+package com.badbyte.demo.controller;
 
-import com.badbyte.demo.Entity.Divisions;
+import com.badbyte.demo.entity.Divisions;
 import com.badbyte.demo.dto.DivisionDTO;
 import com.badbyte.demo.services.DivisionService;
 import org.modelmapper.ModelMapper;

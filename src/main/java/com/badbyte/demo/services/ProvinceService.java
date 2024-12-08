@@ -1,6 +1,6 @@
 package com.badbyte.demo.services;
 
-import com.badbyte.demo.Entity.Provinces;
+import com.badbyte.demo.entity.Provinces;
 import com.badbyte.demo.repository.ProvinceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

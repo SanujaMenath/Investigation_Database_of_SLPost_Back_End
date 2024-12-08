@@ -1,6 +1,6 @@
 package com.badbyte.demo.services;
 
-import com.badbyte.demo.Entity.FormalInquiries;
+import com.badbyte.demo.entity.FormalInquiries;
 import com.badbyte.demo.dto.FormalInquiryDTO;
 import com.badbyte.demo.repository.FormalInquiryRepo;
 import org.modelmapper.ModelMapper;

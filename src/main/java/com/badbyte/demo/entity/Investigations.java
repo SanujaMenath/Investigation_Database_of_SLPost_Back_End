@@ -1,4 +1,4 @@
-package com.badbyte.demo.Entity;
+package com.badbyte.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -33,6 +33,8 @@ public class Investigations {
     private Date acceptedSubmissionDate;
 
     private Date handOveredDateOfSubmission;
+
+    private Integer divisionId;
 
     private String status;
 

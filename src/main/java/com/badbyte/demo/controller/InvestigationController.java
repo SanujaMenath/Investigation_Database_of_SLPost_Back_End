@@ -1,8 +1,8 @@
-package com.badbyte.demo.Controller;
+package com.badbyte.demo.controller;
 
 
 
-import com.badbyte.demo.Entity.Investigations;
+import com.badbyte.demo.entity.Investigations;
 import com.badbyte.demo.dto.InvestigationDTO;
 import com.badbyte.demo.services.InvestigationService;
 import org.springframework.beans.factory.annotation.Autowired;

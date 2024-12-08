@@ -1,6 +1,6 @@
 package com.badbyte.demo.services;
 
-import com.badbyte.demo.Entity.Investigation_Inspectors;
+import com.badbyte.demo.entity.Investigation_Inspectors;
 import com.badbyte.demo.dto.InvInspectorDTO;
 import com.badbyte.demo.repository.InvInspectorRepo;
 import org.modelmapper.ModelMapper;

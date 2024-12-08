@@ -1,7 +1,7 @@
-package com.badbyte.demo.Controller;
+package com.badbyte.demo.controller;
 
-import com.badbyte.demo.Entity.FormalInquiries;
-import com.badbyte.demo.Entity.Investigations;
+import com.badbyte.demo.entity.FormalInquiries;
+import com.badbyte.demo.entity.Investigations;
 import com.badbyte.demo.dto.FormalInquiryDTO;
 import com.badbyte.demo.services.FormalInquiryService;
 import com.badbyte.demo.services.InvestigationService;

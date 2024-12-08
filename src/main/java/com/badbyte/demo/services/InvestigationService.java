@@ -2,7 +2,7 @@ package com.badbyte.demo.services;
 
 
 
-import com.badbyte.demo.Entity.Investigations;
+import com.badbyte.demo.entity.Investigations;
 import com.badbyte.demo.dto.InvestigationDTO;
 import com.badbyte.demo.repository.InvestigationRepo;
 import org.modelmapper.ModelMapper;

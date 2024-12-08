@@ -1,6 +1,6 @@
 package com.badbyte.demo.repository;
 
-import com.badbyte.demo.Entity.Divisions;
+import com.badbyte.demo.entity.Divisions;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

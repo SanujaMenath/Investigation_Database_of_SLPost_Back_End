@@ -39,5 +39,7 @@ public class InvestigationDTO {
 
     private LocalDateTime handOveredDateOfSubmission;
 
+    private Integer divisionId;
+
     private String status;
 }

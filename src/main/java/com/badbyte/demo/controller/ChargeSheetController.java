@@ -1,8 +1,8 @@
-package com.badbyte.demo.Controller;
+package com.badbyte.demo.controller;
 
-import com.badbyte.demo.Entity.ChargeSheets;
-import com.badbyte.demo.Entity.Investigations;
-import com.badbyte.demo.Entity.Suspectors;
+import com.badbyte.demo.entity.ChargeSheets;
+import com.badbyte.demo.entity.Investigations;
+import com.badbyte.demo.entity.Suspectors;
 import com.badbyte.demo.dto.ChargeSheetDTO;
 import com.badbyte.demo.services.ChargeSheetService;
 import com.badbyte.demo.services.InvestigationService;

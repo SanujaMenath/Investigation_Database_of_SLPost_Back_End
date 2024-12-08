@@ -1,6 +1,6 @@
 package com.badbyte.demo.services;
 
-import com.badbyte.demo.Entity.InterimReports;
+import com.badbyte.demo.entity.InterimReports;
 import com.badbyte.demo.dto.InterimReportDTO;
 import com.badbyte.demo.repository.InterimReportRepo;
 import org.modelmapper.ModelMapper;

@@ -1,6 +1,6 @@
 package com.badbyte.demo.services;
 
-import com.badbyte.demo.Entity.Investigation_Investigation_Inspectors;
+import com.badbyte.demo.entity.Investigation_Investigation_Inspectors;
 import com.badbyte.demo.dto.Investigation_Investigation_InspectorsDTO;
 import com.badbyte.demo.repository.IIAssignmentRepo;
 import org.modelmapper.ModelMapper;

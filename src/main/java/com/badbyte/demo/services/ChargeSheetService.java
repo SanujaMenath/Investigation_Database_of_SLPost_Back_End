@@ -1,6 +1,6 @@
 package com.badbyte.demo.services;
 
-import com.badbyte.demo.Entity.ChargeSheets;
+import com.badbyte.demo.entity.ChargeSheets;
 import com.badbyte.demo.dto.ChargeSheetDTO;
 import com.badbyte.demo.repository.ChargeSheetRepo;
 import org.modelmapper.ModelMapper;

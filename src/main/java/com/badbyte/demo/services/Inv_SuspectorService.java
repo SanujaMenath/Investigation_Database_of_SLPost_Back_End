@@ -1,6 +1,6 @@
 package com.badbyte.demo.services;
 
-import com.badbyte.demo.Entity.Investigation_Suspectors;
+import com.badbyte.demo.entity.Investigation_Suspectors;
 import com.badbyte.demo.dto.Inv_SuspectorDTO;
 import com.badbyte.demo.repository.Inv_SuspectorRepo;
 import org.modelmapper.ModelMapper;

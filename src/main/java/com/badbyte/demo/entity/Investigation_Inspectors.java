@@ -1,4 +1,4 @@
-package com.badbyte.demo.Entity;
+package com.badbyte.demo.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

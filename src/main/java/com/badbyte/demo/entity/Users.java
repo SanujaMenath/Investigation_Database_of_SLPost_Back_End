@@ -1,4 +1,4 @@
-package com.badbyte.demo.Entity;
+package com.badbyte.demo.entity;
 
 import com.badbyte.demo.enums.Role;
 import com.badbyte.demo.enums.LocationType;

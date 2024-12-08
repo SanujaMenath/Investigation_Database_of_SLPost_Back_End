@@ -1,6 +1,6 @@
 package com.badbyte.demo.repository;
 
-import com.badbyte.demo.Entity.Investigations;
+import com.badbyte.demo.entity.Investigations;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
