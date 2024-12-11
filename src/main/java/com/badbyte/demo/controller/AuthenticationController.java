@@ -1,28 +1,26 @@
 package com.badbyte.demo.controller;
 
-import com.badbyte.demo.dto.AuthenticateUserDTO;
-import com.badbyte.demo.entity.Users;
-import com.badbyte.demo.services.AuthService;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-
-
+import com.badbyte.demo.dto.LoginRequest;
+import com.badbyte.demo.dto.LoginResponse;
+import com.badbyte.demo.services.AuthenticationService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8080")
 public class AuthenticationController {
-    @Autowired
-    private AuthService authService;
-    @Autowired
-    private ModelMapper modelMapper;
+
+    private final AuthenticationService authenticationService;
+
+    public AuthenticationController(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
 
     @PostMapping("/login")
-    public AuthenticateUserDTO login(@RequestBody AuthenticateUserDTO authenticateUserDTO) {
-        String email = authenticateUserDTO.getEmail();
-        Users user = authService.authenticateUser(email);
-        AuthenticateUserDTO authenticateUser = modelMapper.map(user, AuthenticateUserDTO.class);
-        return authenticateUser;
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+        LoginResponse response = authenticationService.authenticateUser(loginRequest);
+        return ResponseEntity.ok(response);
     }
 }
+

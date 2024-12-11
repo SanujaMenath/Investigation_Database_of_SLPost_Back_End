@@ -6,6 +6,7 @@ import com.badbyte.demo.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,8 @@ public class UserController {
     private ModelMapper modelMapper;
 
     // Create a new user
-    @PostMapping("/add")
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/register")
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
         // Map DTO to entity
         Users users = modelMapper.map(userDTO, Users.class);
