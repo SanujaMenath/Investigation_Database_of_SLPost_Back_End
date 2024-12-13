@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/investigation-suspectors")
+@CrossOrigin(origins = "http://localhost:8080")
 public class Inv_SuspectorController {
 
 

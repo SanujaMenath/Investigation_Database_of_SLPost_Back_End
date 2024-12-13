@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/interim-report")
+@CrossOrigin(origins = "http://localhost:8080")
 public class InterimReportController {
 
     @Autowired

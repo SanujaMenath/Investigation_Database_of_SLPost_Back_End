@@ -30,10 +30,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             String token = authHeader.substring(7);
             if (jwtTokenUtils.validateToken(token)) {
                 Claims claims = jwtTokenUtils.extractClaims(token);
-                String email = claims.getSubject();
 
                 // Add a placeholder authentication mechanism
-                JwtAuthentication authentication = new JwtAuthentication(email, claims);
+                JwtAuthentication authentication = new JwtAuthentication(claims.getSubject(), claims);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }

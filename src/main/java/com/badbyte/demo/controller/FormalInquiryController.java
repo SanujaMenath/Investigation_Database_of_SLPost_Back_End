@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/formal-inquiries")
+@CrossOrigin(origins = "http://localhost:8080")
 public class FormalInquiryController {
 
     @Autowired
