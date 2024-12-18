@@ -28,7 +28,4 @@ public class Investigation_Investigation_Inspectors {
         private String reacquiredDate;
         private String resubmittedDate;
 
-
-
-
 }

@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,11 +23,11 @@ public class FormalInquiries {
         @JoinColumn(name = "file_id")
         private Investigations investigations;
 
-        private LocalDate dateOfAppoint;
-        private LocalDate startedDate;
-        private LocalDate endDate;
+        private Date dateOfAppoint;
+        private Date startedDate;
+        private Date endDate;
         private String recommendationOfIO;
-        private LocalDate dateOfRecommendation;
+        private Date dateOfRecommendation;
 
 
 }

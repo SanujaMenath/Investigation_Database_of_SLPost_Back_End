@@ -42,8 +42,4 @@ public class ChargeSheets {
     //doubt
     private String aatOrderDescription;
 
-
-
-
-
 }

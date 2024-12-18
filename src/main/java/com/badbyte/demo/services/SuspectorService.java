@@ -2,7 +2,7 @@ package com.badbyte.demo.services;
 
 import com.badbyte.demo.entity.Suspectors;
 import com.badbyte.demo.dto.SuspectorDTO;
-import com.badbyte.demo.repository.SuspectRepo;
+import com.badbyte.demo.repository.SuspectorRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,18 +14,18 @@ import java.util.List;
 public class SuspectorService {
 
     @Autowired
-    private SuspectRepo suspectRepo;
+    private SuspectorRepo suspectorRepo;
 
     @Autowired
     ModelMapper modelMapper;
 
     public Suspectors getSuspectorById(String nic) {
-        return suspectRepo.findById(nic).orElse(null);
+        return suspectorRepo.findById(nic).orElse(null);
 
     }
 
     public List<Suspectors> getAllSuspectors() {
-        return suspectRepo.findAll();
+        return suspectorRepo.findAll();
     }
 
     public Suspectors saveSuspector(SuspectorDTO suspectorDTO) {
@@ -36,14 +36,14 @@ public class SuspectorService {
         Suspectors sus = modelMapper.map(suspectorDTO, Suspectors.class);
 
 
-        return suspectRepo.save(sus);
+        return suspectorRepo.save(sus);
     }
     private LocalDateTime CalculateRetirementDate(LocalDateTime dob,int yearsToAdd) {
         return dob.plusYears(yearsToAdd);
     }
 
     public List<Suspectors> searchSuspectors(String search) {
-        List<Suspectors> suspectors = suspectRepo.searchSuspectors(search);
+        List<Suspectors> suspectors = suspectorRepo.searchSuspectors(search);
         if (suspectors.isEmpty()) {
             throw new IllegalArgumentException("No investigations found for the keyword: " + search);
         }
