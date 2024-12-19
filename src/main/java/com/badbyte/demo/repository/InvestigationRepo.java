@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface InvestigationRepo extends JpaRepository<Investigations, String> {
+public interface InvestigationRepo extends JpaRepository<Investigations, Long> {
 
 
     @Query("SELECT i FROM Investigations i WHERE i.fileId LIKE %:fileNumber%")

@@ -19,8 +19,8 @@ public class SuspectorService {
     @Autowired
     ModelMapper modelMapper;
 
-    public Suspectors getSuspectorById(String nic) {
-        return suspectorRepo.findById(nic).orElse(null);
+    public Suspectors getSuspectorById(Long id) {
+        return suspectorRepo.findById(id).orElse(null);
 
     }
 
@@ -42,13 +42,7 @@ public class SuspectorService {
         return dob.plusYears(yearsToAdd);
     }
 
-    public List<Suspectors> searchSuspectors(String search) {
-        List<Suspectors> suspectors = suspectorRepo.searchSuspectors(search);
-        if (suspectors.isEmpty()) {
-            throw new IllegalArgumentException("No investigations found for the keyword: " + search);
-        }
-        return suspectors;
-    }
+
 
 
 }

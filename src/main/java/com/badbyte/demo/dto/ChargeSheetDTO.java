@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -12,26 +13,23 @@ import java.util.Date;
 @Data
 public class ChargeSheetDTO {
 
-    @NotNull
-    private String id;
+    private Long id;
 
     private InvestigationRefDTO investigation;
     private SuspectorRefDTO suspector;
 
-    private Date issuedDate;
-    private Date dateOfAnswered;
+    private LocalDateTime issuedDate;
+    private LocalDateTime dateOfAnswered;
 
-    private Date dateOfPersonalFileCalled;
-    private Date dateOfPersonalReturned;
+    private LocalDateTime dateOfPersonalFileCalled;
+    private LocalDateTime dateOfPersonalReturned;
 
-    //there is a doubt to clear
     private String disciplinaryOrder;
 
-    private Date dateOfAppealedForPSC;
+    private LocalDateTime dateOfAppealedForPSC;
     private String pscOrderDescription;
-    private Date dateOfPSCOrderTaken;
-    private Date dateOfAppealedToAAT;
-    private Date dateOfAATOrderTaken;
-    //doubt
+    private LocalDateTime dateOfPSCOrderTaken;
+    private LocalDateTime dateOfAppealedToAAT;
+    private LocalDateTime dateOfAATOrderTaken;
     private String aatOrderDescription;
 }

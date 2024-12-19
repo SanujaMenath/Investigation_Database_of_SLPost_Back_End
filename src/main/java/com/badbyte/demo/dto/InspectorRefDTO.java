@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class InspectorRefDTO {
     private String nic;
 
-    // Getters and setters
+
 }

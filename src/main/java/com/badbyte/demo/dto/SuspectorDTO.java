@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 public class SuspectorDTO {
 
     @NotNull
+    private Long id;
+
     private String nic;
 
     private String name;

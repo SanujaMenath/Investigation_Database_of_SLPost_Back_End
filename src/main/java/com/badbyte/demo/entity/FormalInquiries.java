@@ -15,19 +15,18 @@ import java.util.Date;
 @Entity
 public class FormalInquiries {
 
-
         @Id
-        private String id; // given by the user
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
         @ManyToOne
-        @JoinColumn(name = "file_id")
+        @JoinColumn(name = "investigation_id", nullable = false)
         private Investigations investigations;
 
-        private Date dateOfAppoint;
-        private Date startedDate;
-        private Date endDate;
+        private LocalDateTime dateOfAppoint;
+        private LocalDateTime startedDate;
+        private LocalDateTime endDate;
         private String recommendationOfIO;
-        private Date dateOfRecommendation;
-
-
+        private LocalDateTime dateOfRecommendation;
 }
+

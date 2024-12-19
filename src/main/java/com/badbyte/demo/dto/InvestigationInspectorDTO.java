@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class InvInspectorDTO {
+public class InvestigationInspectorDTO {
     @NotNull
     private String nic;
 

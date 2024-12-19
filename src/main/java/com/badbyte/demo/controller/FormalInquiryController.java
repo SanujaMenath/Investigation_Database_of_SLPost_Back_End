@@ -27,13 +27,13 @@ public class FormalInquiryController {
     }
 
     @GetMapping("/{id}")
-    public FormalInquiries getFormalInquiryById(@PathVariable String id) {
+    public FormalInquiries getFormalInquiryById(@PathVariable Long id) {
         return formalInquiryService.getFormalInquiryById(id);
     }
     @PostMapping
     public ResponseEntity<Object> createInspector(@RequestBody FormalInquiryDTO inquiryDTO) {
 
-        Investigations investigations = investigationService.getInvestigationByFileNumber(inquiryDTO.getInvestigation().getFileId());
+        Investigations investigations = investigationService.getInvestigationById(inquiryDTO.getInvestigation().getId());
 
         if (investigations == null){
             return ResponseEntity.badRequest().body("Investigation is not found in the db.");

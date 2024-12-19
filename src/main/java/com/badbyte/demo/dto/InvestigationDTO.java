@@ -1,6 +1,5 @@
 package com.badbyte.demo.dto;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,15 +15,15 @@ import java.time.LocalDateTime;
 public class InvestigationDTO {
 
     @NotNull
-    @NotEmpty
+    private Long id;
+
+    @NotNull
     private String fileId;
 
     @NotNull
-    @NotEmpty
     private String incident;
 
     @NotNull
-    @NotEmpty
     private LocalDateTime incidentDate;
 
     private LocalDateTime dateReferredToInvestigate;

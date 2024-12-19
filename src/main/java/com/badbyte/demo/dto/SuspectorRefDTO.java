@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SuspectorRefDTO {
 
-        private String nic;
+        private Long id;
 }

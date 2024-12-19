@@ -41,19 +41,4 @@ public class SuspectController {
         return service.getAllSuspectors();
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<Object> searchSuspector(@RequestParam String keyword) {
-        try {
-            if (keyword == null || keyword.isEmpty()) {
-//                KeywordNotFoundResponse response = new KeywordNotFoundResponse(this.getClass().getName(), "Keyword cannot be null or empty");
-//                return ResponseEntity.unprocessableEntity().body(response);
-            }
-
-            List<Suspectors> results = service.searchSuspectors(keyword);
-            return ResponseEntity.ok(results);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
-
 }

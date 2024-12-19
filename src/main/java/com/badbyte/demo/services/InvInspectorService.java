@@ -1,7 +1,7 @@
 package com.badbyte.demo.services;
 
 import com.badbyte.demo.entity.Investigation_Inspectors;
-import com.badbyte.demo.dto.InvInspectorDTO;
+import com.badbyte.demo.dto.InvestigationInspectorDTO;
 import com.badbyte.demo.repository.InvInspectorRepo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class InvInspectorService {
             return inspectorRepository.findById(nic).orElse(null);
         }
 
-        public Investigation_Inspectors saveInspector(InvInspectorDTO inspector) {
+        public Investigation_Inspectors saveInspector(InvestigationInspectorDTO inspector) {
             Investigation_Inspectors inspec = modelMapper.map(inspector, Investigation_Inspectors.class);
             return inspectorRepository.save(inspec);
         }

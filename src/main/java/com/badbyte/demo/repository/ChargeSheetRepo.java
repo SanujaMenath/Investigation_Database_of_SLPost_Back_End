@@ -7,9 +7,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ChargeSheetRepo extends JpaRepository<ChargeSheets, String> {
+public interface ChargeSheetRepo extends JpaRepository<ChargeSheets, Long> {
 
 
-    @Query("SELECT i FROM ChargeSheets i WHERE i.id LIKE %:keyword% OR i.aatOrderDescription LIKE %:keyword% OR i.pscOrderDescription LIKE %:keyword%")
-    List<ChargeSheets> findChargeSheetByKeyword(@Param("keyword") String keyword);
+
 }

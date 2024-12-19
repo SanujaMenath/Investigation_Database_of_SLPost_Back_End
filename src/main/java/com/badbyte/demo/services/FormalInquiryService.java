@@ -21,7 +21,7 @@ public class FormalInquiryService {
         return formalInquiryRepository.findAll();
     }
 
-    public FormalInquiries getFormalInquiryById(String id) {
+    public FormalInquiries getFormalInquiryById(Long id) {
         return formalInquiryRepository.findById(id).orElse(null);
 
     }

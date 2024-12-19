@@ -1,7 +1,7 @@
 package com.badbyte.demo.controller;
 
 import com.badbyte.demo.entity.Investigation_Inspectors;
-import com.badbyte.demo.dto.InvInspectorDTO;
+import com.badbyte.demo.dto.InvestigationInspectorDTO;
 import com.badbyte.demo.services.InvInspectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,12 +27,12 @@ public class InvestigationInspectorController {
         }
 
         @PostMapping
-        public Investigation_Inspectors createInspector(@RequestBody InvInspectorDTO inspector) {
+        public Investigation_Inspectors createInspector(@RequestBody InvestigationInspectorDTO inspector) {
             return inspectorService.saveInspector(inspector);
         }
 
         @PutMapping("/{nic}")
-        public Investigation_Inspectors updateInspector(@PathVariable String nic, @RequestBody InvInspectorDTO inspector) {
+        public Investigation_Inspectors updateInspector(@PathVariable String nic, @RequestBody InvestigationInspectorDTO inspector) {
             Investigation_Inspectors existingInspector = inspectorService.getInspectorById(nic);
             if (existingInspector != null) {
                 inspector.setNic(nic);

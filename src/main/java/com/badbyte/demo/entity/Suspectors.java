@@ -12,7 +12,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 public class Suspectors {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nic;
 
     private String name;
@@ -20,6 +24,4 @@ public class Suspectors {
     private LocalDateTime dob;
 
     private LocalDateTime retiredDate;
-
-
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,9 +25,9 @@ public class Investigation_Investigation_Inspectors {
         @JoinColumn(name = "nic")
         private Investigation_Inspectors inspector;
 
-        private String acquiredDate;
-        private String submittedDate;
-        private String reacquiredDate;
-        private String resubmittedDate;
+        private LocalDateTime acquiredDate;
+        private LocalDateTime submittedDate;
+        private LocalDateTime reacquiredDate;
+        private LocalDateTime resubmittedDate;
 
 }

@@ -40,7 +40,7 @@ public class IIAssignmentController {
     @PostMapping
     public ResponseEntity<Object> createAssignment(@RequestBody Investigation_Investigation_InspectorsDTO assignmentDTO) {
         // Fetch the Investigation and Inspector entities by their IDs
-        Investigations investigations = investigationService.getInvestigationByFileNumber(assignmentDTO.getInvestigation().getFileId());
+        Investigations investigations = investigationService.getInvestigationById(assignmentDTO.getInvestigation().getId());
         Investigation_Inspectors inspector = investigationInspectorService.getInspectorById(assignmentDTO.getInspector().getNic());
 
         if (investigations == null){
@@ -67,8 +67,8 @@ public class IIAssignmentController {
     }
 
         @DeleteMapping("/{id}")
-        public void deleteAssignment(@PathVariable String CaseNo) {
-            assignmentService.deleteAssignment(CaseNo);
+        public void deleteAssignment(@PathVariable String FileId) {
+            assignmentService.deleteAssignment(FileId);
         }
 
 }

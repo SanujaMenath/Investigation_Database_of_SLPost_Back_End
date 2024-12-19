@@ -25,8 +25,8 @@ public class InvestigationController {
 
 
     @GetMapping("/{fileId}")
-    public ResponseEntity<Object> getInvestigationByFileNumber(@PathVariable String fileId) {
-        Investigations inv = service.getInvestigationByFileNumber(fileId);
+    public ResponseEntity<Object> getInvestigationByFileNumber(@PathVariable Long id) {
+        Investigations inv = service.getInvestigationById(id);
         if (inv == null) {
             return ResponseEntity.notFound().build();
         }
@@ -44,14 +44,14 @@ public class InvestigationController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateInvestigation(@PathVariable String id, @RequestBody InvestigationDTO updatedInvestigation) {
+    public ResponseEntity<Object> updateInvestigation(@PathVariable Long id, @RequestBody InvestigationDTO updatedInvestigation) {
 
         return ResponseEntity.accepted().body(service.editInvestigation(id, updatedInvestigation));
     }
     
 
     @DeleteMapping("/{id}")
-    public void deleteInvestigation(@PathVariable String id) {
+    public void deleteInvestigation(@PathVariable Long id) {
         service.deleteInvestigation(id);
     }
 

@@ -2,9 +2,8 @@ package com.badbyte.demo.controller;
 
 import com.badbyte.demo.dto.InvestigationPropsDTO;
 import com.badbyte.demo.services.InvestigationPropsService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,7 +19,11 @@ public class InvestigationPropsController {
 
     @PostMapping("create")
     public ResponseEntity<String> createInvestigation(@RequestBody InvestigationPropsDTO investigationPropsDTO) {
-        investigationPropsService.processInvestigation(investigationPropsDTO);
-        return ResponseEntity.ok("Investigation data processed successfully!");
+        try {
+            investigationPropsService.processInvestigation(investigationPropsDTO);
+            return ResponseEntity.ok("Investigation data processed successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error processing investigation data: " + e.getMessage());
+        }
     }
 }

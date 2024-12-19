@@ -1,11 +1,12 @@
 package com.badbyte.demo.dto;
 
-import com.badbyte.demo.entity.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+
 import java.util.List;
 
 @Data
@@ -13,15 +14,23 @@ import java.util.List;
 @NoArgsConstructor
 public class InvestigationPropsDTO {
 
+    @NotNull
+    private Long id;
+
+    @NotNull
     private String fileId;
+
+    @NotNull
     private String incident;
-    private Date incidentDate;
-    private Date dateReferredToInvestigate;
-    private Date dateOfFinalReportIssued;
+
+    @NotNull
+    private LocalDateTime incidentDate;
+    private LocalDateTime dateReferredToInvestigate;
+    private LocalDateTime dateOfFinalReportIssued;
     private String recommendationOfFinalReport;
     private String personWhoAcceptedSubmission;
-    private String acceptedSubmissionDate;
-    private Date handOveredDateOfSubmission;
+    private LocalDateTime acceptedSubmissionDate;
+    private LocalDateTime handOveredDateOfSubmission;
     private int divisionId;
     private String status;
 
@@ -32,7 +41,7 @@ public class InvestigationPropsDTO {
     private List<Investigation_Investigation_InspectorsDTO> investigationInspectors;
 
     private String appealedAcceptedOrRejected;
-    private Date dateOfRestateForAppealed;
-    private Date dateOfFinalOrderThatInformedToAccused;
-    private Date dateOfAppealedForReinstate;
+    private LocalDateTime dateOfRestateForAppealed;
+    private LocalDateTime dateOfFinalOrderThatInformedToAccused;
+    private LocalDateTime dateOfAppealedForReinstate;
 }

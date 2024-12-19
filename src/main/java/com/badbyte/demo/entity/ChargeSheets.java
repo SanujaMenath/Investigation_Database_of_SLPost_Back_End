@@ -5,41 +5,39 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 @Entity
 public class ChargeSheets {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-generate the ID
+    private Long id;  // Change the type to Long for auto-generated values
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "file_id")
+    @JoinColumn(name = "investigation_id")
     private Investigations investigations;
 
-    private Date issuedDate;
-    private Date dateOfAnswered;
+    private LocalDateTime issuedDate;
+    private LocalDateTime dateOfAnswered;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nic")
+    @JoinColumn(name = "suspector_id")  // Change the column name to use 'suspector_id'
     private Suspectors suspectors;
 
-    private Date dateOfPersonalFileCalled;
-    private Date dateOfPersonalReturned;
+    private LocalDateTime dateOfPersonalFileCalled;
+    private LocalDateTime dateOfPersonalReturned;
 
-    //there is a doubt to clear
     private String disciplinaryOrder;
 
-    private Date dateOfAppealedForPSC;
+    private LocalDateTime dateOfAppealedForPSC;
     private String pscOrderDescription;
-    private Date dateOfPSCOrderTaken;
-    private Date dateOfAppealedToAAT;
-    private Date dateOfAATOrderTaken;
-    //doubt
+    private LocalDateTime dateOfPSCOrderTaken;
+    private LocalDateTime dateOfAppealedToAAT;
+    private LocalDateTime dateOfAATOrderTaken;
     private String aatOrderDescription;
-
 }

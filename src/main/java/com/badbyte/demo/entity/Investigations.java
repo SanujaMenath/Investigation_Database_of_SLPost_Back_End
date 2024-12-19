@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,35 +14,37 @@ import java.util.Set;
 @Entity
 public class Investigations {
 
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String fileId;
 
     private String incident;
 
-    private Date incidentDate;
+    private LocalDateTime incidentDate;
 
-    private Date dateReferedToInvestigate;
+    private LocalDateTime dateReferredToInvestigate;
 
-    private Date dateOfFinalReportIssued;
+    private LocalDateTime dateOfFinalReportIssued;
 
     private String recommendationOfFinalReport;
 
     private String personWhoAcceptedSubmission;
 
-    private Date acceptedSubmissionDate;
+    private LocalDateTime acceptedSubmissionDate;
 
-    private Date handOveredDateOfSubmission;
+    private LocalDateTime handOveredDateOfSubmission;
 
     private Integer divisionId;
 
     private String status;
 
     @UpdateTimestamp
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
+    // One-to-many relationship with Investigation_Investigation_Inspectors
     @OneToMany(mappedBy = "investigations", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Investigation_Investigation_Inspectors> assignments = new HashSet<>();
-
 
 }

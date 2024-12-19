@@ -23,7 +23,7 @@ public class InvestigationService {
         return repository.findAll();
     }
 
-    public Investigations getInvestigationById(String id) {
+    public Investigations getInvestigationById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
@@ -33,7 +33,7 @@ public class InvestigationService {
         return repository.save(inv);
     }
 
-    public Investigations editInvestigation(String id, InvestigationDTO investigationToUpdate) {
+    public Investigations editInvestigation(Long id, InvestigationDTO investigationToUpdate) {
         Investigations alreadyExistingInvestigations = getInvestigationById(id);
 
         modelMapper.map(investigationToUpdate, alreadyExistingInvestigations);
@@ -41,11 +41,9 @@ public class InvestigationService {
         return repository.save(alreadyExistingInvestigations);
     }
 
-    public Investigations getInvestigationByFileNumber(String fileNumber) {
-        return repository.findByFileNumber(fileNumber);
-    }
 
-    public void deleteInvestigation(String id) {
+
+    public void deleteInvestigation(Long id) {
         repository.deleteById(id);
     }
 

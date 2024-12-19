@@ -38,7 +38,7 @@ public class InterimReportController {
 
     @PostMapping
     public ResponseEntity<Object> addReport(@RequestBody InterimReportDTO interimReport) {
-        Investigations investigations = investigationService.getInvestigationByFileNumber(interimReport.getInvestigation().getFileId());
+        Investigations investigations = investigationService.getInvestigationById(interimReport.getInvestigation().getId());
         Investigation_Inspectors inspector = invInspectorService.getInspectorById(interimReport.getInvestigationInspector().getNic());
 
         if (investigations == null){

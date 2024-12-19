@@ -28,22 +28,14 @@ public class ChargeSheetService {
         return chargeSheetRepo.findAll();
 
     }
-    public ChargeSheets getChargeSheetById(String id) {
+    public ChargeSheets getChargeSheetById(Long id) {
         return chargeSheetRepo.findById(id).orElse(null);
     }
 
-    public void deleteChargeSheet(String id) {
+    public void deleteChargeSheet(Long id) {
         chargeSheetRepo.deleteById(id);
     }
 
-    public List<ChargeSheets> getChargeSheetsByOrder(String keyword) {
 
-        List<ChargeSheets> search =  chargeSheetRepo.findChargeSheetByKeyword( keyword);
-
-        if (search.isEmpty()) {
-            throw new IllegalArgumentException("No investigations found for the keyword: " + keyword);
-        }
-        return chargeSheetRepo.findChargeSheetByKeyword(keyword);
-    }
 
 }

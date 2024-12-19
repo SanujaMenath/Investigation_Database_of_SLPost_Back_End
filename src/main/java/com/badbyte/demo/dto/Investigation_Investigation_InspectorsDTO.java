@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -13,10 +15,10 @@ public class Investigation_Investigation_InspectorsDTO {
     private String caseNo;
     private InvestigationRefDTO investigation;
     private InspectorRefDTO inspector;
-    private String acquiredDate;
-    private String submittedDate;
-    private String reacquiredDate;
-    private String resubmittedDate;
+    private LocalDateTime acquiredDate;
+    private LocalDateTime submittedDate;
+    private LocalDateTime reacquiredDate;
+    private LocalDateTime resubmittedDate;
 
 }
 

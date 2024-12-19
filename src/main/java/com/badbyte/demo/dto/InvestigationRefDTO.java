@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class InvestigationRefDTO {
-    private String fileId;
+    private Long id;
 
-    // Getters and setters
 }

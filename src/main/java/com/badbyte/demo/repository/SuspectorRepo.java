@@ -7,9 +7,8 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface SuspectorRepo extends JpaRepository<Suspectors, String> {
+public interface SuspectorRepo extends JpaRepository<Suspectors, Long> {
 
-  @Query("SELECT i FROM Suspectors i WHERE i.nic LIKE %:keyword% OR i.name LIKE %:keyword%")
-      List<Suspectors> searchSuspectors(@Param("keyword") String keyword);
+
 
 }
